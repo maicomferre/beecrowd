@@ -12,42 +12,40 @@ int main()
 	int calc;
 	double entrada;
 
-	while(cin >> entrada)
+	cin >> entrada;
+
+	cout << "NOTAS:" << endl;
+
+	for(int i=0; i<6; i++)
 	{
+		if(entrada > 0.00)
+			calc = (int)(entrada / notas[i]);
 
-		cout << "NOTAS:" << endl;
+		cout << calc << " nota(s) de R$ " << notas[i]  << ".00" << endl;
 
-		for(int i=0; i<6; i++)
-		{
-			if(entrada > 0)
-				calc = (int)entrada / notas[i];
+		if(calc > 0)
+			entrada -= notas[i] * calc;
 
-			cout << calc << " nota(s) de R$ " << notas[i]  << ".00" << endl;
-
-			if(calc > 0)
-				entrada -= notas[i] * calc;
-
-			calc = 0;
-		}
-
-		cout << "MOEDAS:" << endl;
-
-		entrada = round(entrada * 100);
-
-		cout.setf(ios::fixed);
-		for(int i=0; i<6; i++)
-		{
-			if(entrada > 0)
-				calc = (int)entrada / modeas[i];
-
-			cout << calc << " moeda(s) de R$ ";
-			cout << setprecision(2) << modeas[i] / 100.0 << endl;
-
-			if(calc > 0)
-				entrada -= modeas[i] * calc;
-
-			calc = 0;
-		}
+		calc = 0;
 	}
-	return 1;
+
+	cout << "MOEDAS:" << endl;
+
+	entrada = round(entrada * 100);
+
+	cout.setf(ios::fixed);
+	for(int i=0; i<6; i++)
+	{
+		if(entrada > 0)
+			calc = (int)(entrada / modeas[i]);
+
+		cout << calc << " moeda(s) de R$ ";
+		cout << setprecision(2) << modeas[i] / 100.0 << endl;
+
+		if(calc > 0)
+			entrada -= modeas[i] * calc;
+
+		calc = 0;
+	}
+	return 0;
 }

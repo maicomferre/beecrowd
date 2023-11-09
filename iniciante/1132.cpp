@@ -21,4 +21,6 @@ int main()
 		if(i % 13 != 0)
 			soma += i;
 	cout << soma << endl;
+
+	return 0;
 }
